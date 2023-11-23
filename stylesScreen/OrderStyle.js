@@ -32,9 +32,18 @@ const styles = StyleSheet.create({
         width: '70%',
         borderRadius: 8,
     },
+    buttonFunction: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: "#1F575E",
+      height: 30,
+      width: 30,
+      borderRadius: 5,
+      marginTop: -20,
+    },
     modalView: {
         marginLeft: '5%',
-        marginTop: '45%',
+        marginTop: '20%',
         backgroundColor: "white",
         borderWidth: 2,
         borderColor: "#002329",
@@ -42,7 +51,7 @@ const styles = StyleSheet.create({
         padding: 15,
         shadowColor: "#000",
         width: '90%',
-        height: '90%',
+        height: '92%',
         shadowOffset: {
           width: 0,
           height: 2
@@ -102,7 +111,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#B3D0D4',
         borderRadius: 3,
         borderWidth: 1,
-        borderColor: '#00474F'
+        borderColor: '#00474F',
+        zIndex: 1000,
+        position: 'relative',
       },
       containerStyle: {
         padding: 1,
@@ -112,15 +123,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#B3D0D4',
         borderRadius: 3,
         borderWidth: 1,
-        borderColor: '#00474F'
+        borderColor: '#00474F',
+        zIndex: 1000,
+        position: 'relative',
       },
       containerDataStyle1: {
         marginLeft: 5,
-        width:'30%',
+        width:200,
         backgroundColor: '#B3D0D4',
         borderRadius: 3,
         borderWidth: 1,
-        borderColor: '#00474F'
+        borderColor: '#00474F',
+        zIndex: 1000,
+        position: 'relative',
       },
       containerStyle1: {
         marginLeft: 1,
@@ -129,7 +144,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#B3D0D4',
         borderRadius: 3,
         borderWidth: 1,
-        borderColor: '#00474F'
+        borderColor: '#00474F',
+        zIndex: 1000,
+        position: 'relative',
       },
       button: {
         marginLeft: 70,
@@ -143,7 +160,7 @@ const styles = StyleSheet.create({
     modalText1: {
         paddingTop: 5,
         paddingBottom: 5,
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: "bold",
         color: '#1F575E',
     },
@@ -152,6 +169,93 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 5,
+    },
+    listId: {
+      marginTop: 10,
+      padding: 20,
+      backgroundColor: '#B3D0D4',
+      borderRadius: 5,
+      borderWidth: 2,
+      borderColor: '#00474F',
+      fontSize: 22,
+      fontWeight: "bold",
+    },
+    list: {
+      marginTop: 24,
+      padding: 20,
+      backgroundColor: '#B3D0D4',
+      borderRadius: 5,
+      borderWidth: 2,
+      borderColor: '#00474F',
+      fontSize: 18,
+      fontWeight: "500",
+    },
+    list1: {
+      padding: 20,
+      backgroundColor: '#fff',
+      fontSize: 20,
+      fontWeight: "bold",
+    },
+    flatlist: {
+      padding: 10,
+      height: '80%',
+    },
+    searchInput: {
+      marginTop: 10,
+      marginLeft: '2%',
+      backgroundColor: '#B3D0D4',
+      padding: 10,
+      height: 40,
+      width: '95%',
+      fontSize: 16,
+    },
+    modalLineOrderView: {
+        margin: '2%',
+        marginTop: '35%',
+        padding: '2%',
+        backgroundColor: "white",
+        borderWidth: 2,
+        borderColor: "#002329",
+        borderRadius: 5,
+        padding: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5
+    },
+    modalEditView:{
+      marginLeft: '1%',
+      marginTop: '93%',
+      backgroundColor: "white",
+      borderWidth: 2,
+      borderColor: "#002329",
+      borderRadius: 5,
+      padding: 15,
+      shadowColor: "#000",
+      width: '98%',
+      height: '55%',
+      shadowOffset: {
+        width: 1,
+        height: 4
+      },
+      shadowOpacity: 0.5,
+      shadowRadius: 5,
+      elevation: 5
+    },
+    listedit: {
+      padding: 10,
+      fontSize: 18,
+      fontWeight: "500",
+    },
+    listedit1: {
+      padding: 10,
+      fontSize: 18,
+      fontWeight: "500",
+      color: "#686868",
     }
 });
 

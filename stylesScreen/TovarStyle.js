@@ -10,6 +10,13 @@ const styles = StyleSheet.create({
           height: 40,
           backgroundColor: "#558F96"
     },
+    textFirst: {
+      textAlign: "left", 
+      fontWeight: "bold", 
+      fontSize: 22, 
+      paddingLeft: 10,
+      color: "white" 
+    },
     text: {
          textAlign: "center", 
          fontWeight: "bold", 
@@ -32,6 +39,15 @@ const styles = StyleSheet.create({
         width: '75%',
         borderRadius: 8,
     },
+    buttonFunction: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: "#1F575E",
+      height: 30,
+      width: 30,
+      borderRadius: 5,
+      marginTop: -20,
+    },
     modalView: {
         marginLeft: '3%',
         marginTop: '50%',
@@ -50,6 +66,25 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.5,
         shadowRadius: 5,
         elevation: 5
+    },
+    modalEditView:{
+      marginLeft: '1%',
+      marginTop: '93%',
+      backgroundColor: "white",
+      borderWidth: 2,
+      borderColor: "#002329",
+      borderRadius: 5,
+      padding: 15,
+      shadowColor: "#000",
+      width: '98%',
+      height: '55%',
+      shadowOffset: {
+        width: 1,
+        height: 4
+      },
+      shadowOpacity: 0.5,
+      shadowRadius: 5,
+      elevation: 5
     },
     modalTextHeader: {
         fontSize: 21,
@@ -152,6 +187,50 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 5,
+    },
+    listId: {
+      marginTop: 10,
+      padding: 20,
+      backgroundColor: '#B3D0D4',
+      borderRadius: 5,
+      borderWidth: 2,
+      borderColor: '#00474F',
+      fontSize: 22,
+      fontWeight: "bold",
+    },
+    list: {
+      marginTop: 24,
+      padding: 20,
+      backgroundColor: '#B3D0D4',
+      borderRadius: 5,
+      borderWidth: 2,
+      borderColor: '#00474F',
+      fontSize: 18,
+      fontWeight: "500",
+    },
+    flatlist: {
+      padding: 10,
+      height: '80%',
+    },
+    searchInput: {
+      marginTop: 10,
+      marginLeft: '2%',
+      backgroundColor: '#B3D0D4',
+      padding: 10,
+      height: 40,
+      width: '95%',
+      fontSize: 16,
+    },
+    listedit: {
+      padding: 10,
+      fontSize: 18,
+      fontWeight: "500",
+    },
+    listedit1: {
+      padding: 10,
+      fontSize: 18,
+      fontWeight: "500",
+      color: "#686868",
     }
 });
 

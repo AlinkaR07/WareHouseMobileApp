@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     touchableOpacityView1: {
         alignItems: 'center',
         justifyContent: 'center',
-    }
+    },
   });
 
   export default styles;

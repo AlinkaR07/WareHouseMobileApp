@@ -9,13 +9,14 @@ import { Register } from './Register';
 
 export const Home = () => {
   const [modalLoginVisible, setModalLoginVisible] = useState(false);
-   const [modalRegisterVisible, setModalRegisterVisible] = useState(false);
+  const [modalRegisterVisible, setModalRegisterVisible] = useState(false);
+  const [isAuthorization, setIsAuthorization]=useState(false);
 
-   const openModalLogin = () => {
+const openModalLogin = () => {
     setModalLoginVisible(true);
    };
 
-   const closeModalLogin = () => {
+const closeModalLogin = () => {
     setModalLoginVisible(false);
  };
 
@@ -27,11 +28,27 @@ export const Home = () => {
     setModalRegisterVisible(false);
  };
 
+ const handleLoginSuccess = () => {
+    setIsAuthorization(true);
+    setModalLoginVisible(false); // Close the login modal
+  };
+
+  const handleRegisterSuccess = () => {
+    setIsAuthorization(true);
+    setModalRegisterVisible(false); // Close the login modal
+  };
+
+  const handleLogoffSuccess = () => {
+    setIsAuthorization(false);
+  };
+
   return (
     <View style={{backgroundColor: '#fff', flex: 1}}>
       <SafeAreaView style={styles.safearea}>
           <Carousel/>
-            </SafeAreaView>
+      </SafeAreaView>
+            { !isAuthorization ? (
+            <>
             <TouchableOpacity style={{alignItems: 'center'}} onPress={openModalLogin}>
                 <View style={styles.touchableOpacityView}>                                
                     <Text style={{fontSize: 25, fontWeight: "semibold", color: "white"}}>Войти</Text>
@@ -42,8 +59,7 @@ export const Home = () => {
                     <Text style={{fontSize: 18, fontWeight: "semibold", color: "#1F575E", textDecorationLine: 'underline'}}>Регистрация</Text>
                 </View>
             </TouchableOpacity>
-            {modalLoginVisible ? (
-                // Отображаем экран входа, если modalVisible установлен в true
+            { modalLoginVisible ? (
                 <View>
                     <Modal
                         animationType="fade"
@@ -52,12 +68,11 @@ export const Home = () => {
                         onRequestClose={closeModalLogin}
                     >
                         <View style={{marginLeft: "85%", marginTop: -3}}>
-                        {/* Кнопка для закрытия модального окна */}
                         <TouchableOpacity onPress={closeModalLogin}>
                             <Icon name="close" color="#002329"/>
                         </TouchableOpacity>
                         </View>
-                        <Login/>   
+                        <Login onLoginSuccess={handleLoginSuccess}/>   
                     </Modal>
                 </View>
             ) : (
@@ -78,12 +93,20 @@ export const Home = () => {
                             <Icon name="close" color="#002329"/>
                         </TouchableOpacity>
                         </View>
-                        <Register/>   
+                        <Register onRegisterSuccess={handleRegisterSuccess}/>   
                     </Modal>
                 </View>
             ) : (
                 ""
             )}
+         </>
+        ) : (
+            <>
+                <TouchableOpacity style={{top: '30%', left: '35%'}} onPress={handleLogoffSuccess}>                             
+                        <Icon name="exit-to-app" color="#1F575E" size={45}/> 
+                </TouchableOpacity>
+            </>
+        )}                       
     </View>
   );
 }
