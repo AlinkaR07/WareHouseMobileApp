@@ -2,35 +2,6 @@ import { StyleSheet} from 'react-native';
 
 
 const styles = StyleSheet.create({
-    headFirst: { 
-        height: 40, 
-        backgroundColor: "#1F575E"
-    },
-    head: {
-          height: 40,
-          backgroundColor: "#558F96"
-    },
-    textFirst: {
-      textAlign: "left", 
-      fontWeight: "bold", 
-      fontSize: 22, 
-      paddingLeft: 10,
-      color: "white" 
-    },
-    text: {
-         textAlign: "center", 
-         fontWeight: "bold", 
-         fontSize: 22, 
-         color: "white" 
-    },
-    rowFirst: {  
-         height: 30,
-         backgroundColor: "#1F575E"
-    },
-    row: {
-         height: 30, 
-         backgroundColor: "#558F96"
-    },
     touchableOpacityView: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -50,7 +21,7 @@ const styles = StyleSheet.create({
     },
     modalView: {
         marginLeft: '3%',
-        marginTop: '50%',
+        marginTop: '65%',
         backgroundColor: "white",
         borderWidth: 2,
         borderColor: "#002329",
@@ -69,7 +40,7 @@ const styles = StyleSheet.create({
     },
     modalEditView:{
       marginLeft: '1%',
-      marginTop: '93%',
+      marginTop: '85%',
       backgroundColor: "white",
       borderWidth: 2,
       borderColor: "#002329",
@@ -77,7 +48,7 @@ const styles = StyleSheet.create({
       padding: 15,
       shadowColor: "#000",
       width: '98%',
-      height: '55%',
+      height: '65%',
       shadowOffset: {
         width: 1,
         height: 4
@@ -149,23 +120,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#00474F'
       },
-      containerDataStyle1: {
-        marginLeft: 5,
-        width: 100,
-        backgroundColor: '#B3D0D4',
-        borderRadius: 3,
-        borderWidth: 1,
-        borderColor: '#00474F'
-      },
-      containerStyle1: {
-        marginLeft: 5,
-        width: 100,
-        height: 50,
-        backgroundColor: '#B3D0D4',
-        borderRadius: 3,
-        borderWidth: 1,
-        borderColor: '#00474F'
-      },
       button: {
         marginLeft: 70,
         alignItems: 'center',
@@ -210,7 +164,7 @@ const styles = StyleSheet.create({
     },
     flatlist: {
       padding: 10,
-      height: '80%',
+      height: '92%',
     },
     searchInput: {
       marginTop: 10,

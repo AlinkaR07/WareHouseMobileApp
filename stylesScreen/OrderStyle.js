@@ -2,28 +2,6 @@ import { StyleSheet} from 'react-native';
 
 
 const styles = StyleSheet.create({
-    headFirst: { 
-        height: 40, 
-        backgroundColor: "#1F575E"
-    },
-    head: {
-          height: 40,
-          backgroundColor: "#558F96"
-    },
-    text: {
-         textAlign: "center", 
-         fontWeight: "bold", 
-         fontSize: 22, 
-         color: "white" 
-    },
-    rowFirst: {  
-         height: 30,
-         backgroundColor: "#1F575E"
-    },
-    row: {
-         height: 30, 
-         backgroundColor: "#558F96"
-    },
     touchableOpacityView: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -127,27 +105,6 @@ const styles = StyleSheet.create({
         zIndex: 1000,
         position: 'relative',
       },
-      containerDataStyle1: {
-        marginLeft: 5,
-        width:200,
-        backgroundColor: '#B3D0D4',
-        borderRadius: 3,
-        borderWidth: 1,
-        borderColor: '#00474F',
-        zIndex: 1000,
-        position: 'relative',
-      },
-      containerStyle1: {
-        marginLeft: 1,
-        width: 90,
-        height: 50,
-        backgroundColor: '#B3D0D4',
-        borderRadius: 3,
-        borderWidth: 1,
-        borderColor: '#00474F',
-        zIndex: 1000,
-        position: 'relative',
-      },
       button: {
         marginLeft: 70,
         alignItems: 'center',
@@ -198,7 +155,7 @@ const styles = StyleSheet.create({
     },
     flatlist: {
       padding: 10,
-      height: '80%',
+      height: '83%',
     },
     searchInput: {
       marginTop: 10,
@@ -229,7 +186,7 @@ const styles = StyleSheet.create({
     },
     modalEditView:{
       marginLeft: '1%',
-      marginTop: '93%',
+      marginTop: '90%',
       backgroundColor: "white",
       borderWidth: 2,
       borderColor: "#002329",
@@ -237,7 +194,7 @@ const styles = StyleSheet.create({
       padding: 15,
       shadowColor: "#000",
       width: '98%',
-      height: '55%',
+      height: '65%',
       shadowOffset: {
         width: 1,
         height: 4

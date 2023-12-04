@@ -6,7 +6,8 @@ import accountImage from "../assets/account.png"
 
 export  const Profile=({})=>{
     const route = useRoute();
-    const { login, password } = route.params || {};
+    const { userName } = route.params || {};
+
 
     return (
     <>
@@ -23,7 +24,7 @@ export  const Profile=({})=>{
                         fontWeight: "bold",
                         color: '#00474F',
                         marginTop: 10,
-                }}>{login || 'N/A'}</Text>
+                }}>{userName || 'N/A'}</Text>
                 <View style={{
                         marginTop: 30,
                         color: 'white',
@@ -33,7 +34,7 @@ export  const Profile=({})=>{
                         borderRadius: 5,
                 }}>
                 <Text style={{color: 'white', fontSize: 10, textAlign: "left"}}>Роль пользователя</Text>
-                <Text style={{color: 'white', fontSize: 20, textAlign: "left", marginLeft: 15, marginTop: 7, fontWeight: 'bold'}}>{login === 'admin@mail.com' ? 'Администратор' : 'Пользователь'}</Text>
+                <Text style={{color: 'white', fontSize: 20, textAlign: "left", marginLeft: 15, marginTop: 7, fontWeight: 'bold'}}>{userName === "" ? "" : (userName === 'admin@mail.com' ? 'Администратор' : 'Пользователь')}</Text>
             </View>
 
             <View style={{
@@ -45,7 +46,7 @@ export  const Profile=({})=>{
                         borderRadius: 5,
             }}>
                 <Text style={{color: 'white', fontSize: 10, textAlign: "left"}}>Должность пользователя</Text>
-                <Text style={{color: 'white', fontSize: 20, textAlign: "left", marginLeft: 15, marginTop: 7, fontWeight: 'bold'}}>{login === 'admin@mail.com' ? 'Заведующий складом' : 'Работник склада'}</Text>
+                <Text style={{color: 'white', fontSize: 20, textAlign: "left", marginLeft: 15, marginTop: 7, fontWeight: 'bold'}}>{userName === "" ? "" : (userName === 'admin@mail.com' ? 'Заведующий складом' : 'Работник склада')}</Text>
             </View>
 
             <View style={{
@@ -57,7 +58,7 @@ export  const Profile=({})=>{
                         borderRadius: 5,
                 }}>
                 <Text style={{color: 'white', fontSize: 10, textAlign: "left"}}>Логин</Text>
-                <Text style={{color: 'white', fontSize: 20, textAlign: "left", marginLeft: 15, marginTop: 7, fontWeight: 'bold'}}>{login || 'N/A'}</Text>
+                <Text style={{color: 'white', fontSize: 20, textAlign: "left", marginLeft: 15, marginTop: 7, fontWeight: 'bold'}}>{userName || 'Гость'}</Text>
             </View>
         </View>            
     </>

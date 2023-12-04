@@ -1,7 +1,6 @@
-// Login.js
 import React, { useState } from 'react';
 import {Icon} from "@rneui/themed";
-import { View, Text, TextInput, TouchableOpacity} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from '../stylesScreen/LoginStyles';
 
@@ -10,13 +9,35 @@ export const Login = ({ onLoginSuccess }) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    if ((login === 'admin@mail.com' && password === '!Aa123456') || (login === 'smirnova@mail.ru' && password === 'Smir_45')) {
-      console.log('Login successful');
-      onLoginSuccess();
-      navigation.navigate('Пользователь', { login, password });
-    } else {
-      console.log('Invalid credentials');
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("http://192.168.0.162:5050/api/account/login", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: login, password: password, rememberme: true }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Login successful', data);
+        if (                               
+          typeof data !== "undefined" &&
+          typeof data.userName !== "undefined"
+        ) {
+        Alert.alert('Авторизация выполнена', 'Вы успешно авторизовались!');
+        onLoginSuccess({isAuthenticated: true, userName: data.userName, userRole: data.userRole});
+        navigation.navigate('Пользователь', { userName: data.userName});
+        }
+        else {
+          Alert.alert('Ошибка авторизации', 'Неверные учетные данные.');
+        }
+      } else {
+        console.log('Invalid credentials');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
     }
   };
 
@@ -24,7 +45,6 @@ export const Login = ({ onLoginSuccess }) => {
     <View>
           <View style={styles.modalView}>
           <View style={styles.modalHeader}>
-            {/* Здесь размещается содержимое модального окна */}
             <Text style={styles.modalTextHeader}>Вход</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center'}}>

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import { Home } from './screens/Home';
 import { Contact } from './screens/Contact';
@@ -10,11 +10,39 @@ import { Profile } from './screens/Profile';
 import { Order } from './screens/Order';
 import { Tovar } from './screens/Tovar';
 
-import styles from './AppStyles';
-
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+  const [user, setUser] = useState({ isAuthenticated: "", userName: "", userRole: "" }) // объект неавторизованного пользователя
+  const [isAuthenticated, setIsAuthenticated] = useState();
+
+  useEffect(() => {
+    const getUser = async () => {
+      return await fetch("http://192.168.0.162:5050/api/account/isauthenticated")
+        .then((response) => {
+          response.status === 401 && setUser({ isAuthenticated: false, userName: "", userRole:"" })
+          return response.json()
+        })
+        .then(
+          (data) => {
+            if (
+              typeof data !== "undefined" &&
+              typeof data.userName !== "undefined" &&
+              typeof data.userRole !== "undefined"
+            ) {
+              setUser({ isAuthenticated: true, userName: data.userName, userRole: data.userRole })
+              setIsAuthenticated(true);
+              console.log('User', user)
+            }
+          },
+          (error) => {
+            console.log(error)
+          }
+        )
+    }
+    getUser()
+  }, [setUser])
+
   return (
     <NavigationContainer>
       <StatusBar/>

@@ -1,5 +1,6 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import { Text, View, TouchableOpacity, SafeAreaView, Modal } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Icon } from '@rneui/themed';
 
 import { Carousel } from '../component/Carousel/Carousel';
@@ -8,9 +9,10 @@ import { Login } from './Login';
 import { Register } from './Register';
 
 export const Home = () => {
+  const navigation = useNavigation();
   const [modalLoginVisible, setModalLoginVisible] = useState(false);
   const [modalRegisterVisible, setModalRegisterVisible] = useState(false);
-  const [isAuthorization, setIsAuthorization]=useState(false);
+  const [user, setUser] = useState({ isAuthenticated: false, userName: "", userRole: "" });
 
 const openModalLogin = () => {
     setModalLoginVisible(true);
@@ -28,18 +30,34 @@ const closeModalLogin = () => {
     setModalRegisterVisible(false);
  };
 
- const handleLoginSuccess = () => {
-    setIsAuthorization(true);
-    setModalLoginVisible(false); // Close the login modal
+ const handleLoginSuccess = (userLogin) => {
+    setUser(userLogin);
+    console.log(user);
+    setModalLoginVisible(false); 
   };
 
   const handleRegisterSuccess = () => {
-    setIsAuthorization(true);
-    setModalRegisterVisible(false); // Close the login modal
+    setModalRegisterVisible(false); 
   };
 
-  const handleLogoffSuccess = () => {
-    setIsAuthorization(false);
+  const handleLogoffSuccess = async () => {
+    try {
+      const response = await fetch('http://192.168.0.162:5050/api/account/logoff', {
+        method: 'POST', 
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        setUser({ isAuthenticated: false, userName: '', userRole: '' });
+        navigation.navigate('Пользователь', { userName: ""});
+        console.log(user);
+      } else {
+        console.error('Ошибка при выходе из аккаунта', response.statusText);
+      }
+    } catch (error) {
+      console.error('Ошибка при выходе из аккаунта', error);
+    }
   };
 
   return (
@@ -47,7 +65,7 @@ const closeModalLogin = () => {
       <SafeAreaView style={styles.safearea}>
           <Carousel/>
       </SafeAreaView>
-            { !isAuthorization ? (
+            { !user.isAuthenticated ? (
             <>
             <TouchableOpacity style={{alignItems: 'center'}} onPress={openModalLogin}>
                 <View style={styles.touchableOpacityView}>                                
@@ -79,7 +97,6 @@ const closeModalLogin = () => {
                 ""
             )}
             {modalRegisterVisible ? (
-                // Отображаем экран входа, если modalVisible установлен в true
                 <View>
                     <Modal
                         animationType="fade"
@@ -88,7 +105,6 @@ const closeModalLogin = () => {
                         onRequestClose={closeModalRegister}
                     >
                         <View style={{marginLeft: "85%", marginTop: -3}}>
-                        {/* Кнопка для закрытия модального окна */}
                         <TouchableOpacity onPress={closeModalRegister}>
                             <Icon name="close" color="#002329"/>
                         </TouchableOpacity>
